@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        .header {
+            padding: 1;
+            text-align: center;
+            background: red;
+            color: white;
+            font-size: 3vh;
+            width: 100%;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        label, input, select, button {
+            margin-top: 10px;
+        }
+        input[type="submit"] {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Dr. Makan Gigi S.Kom</h1>
+    </div>
+    <h1>Masukan Data Konsultasi</h1>
+    <form id="consultationForm" action="/submit_reservation" method="post" onsubmit="return validateForm()">
+        <label for="activity">Konsultasi</label>
+        <select id="activity" name="activity">
+            <option value="" disabled selected>Pilih Konsultasi</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+
+        <label for="date">Tanggal</label>
+        <input type="date" id="date" name="date">
+
+        <label for="time">Waktu Mulai</label>
+        <input type="time" id="time" name="time">
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        function V() {
+            var activity = document.getElementById('activity').value;
+            if (activity === "") {
+                alert('Harap Pilih Tipe Konsultasi.');
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>

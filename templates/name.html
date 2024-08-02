@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        .header {
+            padding: 1;
+            text-align: center;
+            background: red;
+            color: white;
+            font-size: 3vh;
+            width: 100%;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        label {
+            margin-top: 10px;
+        }
+        input, select, button {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Dr. Makan Gigi S.Kom</h1>
+      </div>
+    <h1>Masukan Data Pasien</h1>
+    <form action="/base" method="POST">
+        <label for="name">Nama:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="number">Nomor Telepon:</label>
+        <input type="tel" id="number" name="number" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="gender">Jenis Kelamin:</label>
+        <select id="gender" name="gender">
+            <option value="M">Laki-Laki</option>
+            <option value="F">Perempuan</option>
+        </select>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
