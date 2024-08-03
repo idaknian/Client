@@ -6,7 +6,7 @@
     <title>{{ title }}</title>
     <style>
         .header {
-            padding: 1;
+            padding: 5px;
             text-align: center;
             background: red;
             color: white;
@@ -18,23 +18,39 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            height: 100vh;
+            height: 95vh;
+            margin: 1;
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
         }
         form {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
         }
-        label, input, select, button {
+        label {
             margin-top: 10px;
+            width: 100%;
+            text-align: left;
         }
-        input[type="submit"] {
+        input, select, button {
+            margin-top: 5px;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid black;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
             margin-top: 20px;
+        }
+        button:hover {
+            background-color: darkred;
         }
     </style>
 </head>
@@ -55,10 +71,10 @@
         <label for="date">Tanggal</label>
         <input type="date" id="date" name="date">
 
-        <label for="time">Waktu Mulai</label>
+        <label for="time">Waktu Temu</label>
         <input type="time" id="time" name="time">
 
-        <input type="submit" value="Submit">
+        <button type="submit">Submit</button>
     </form>
 
     <script>
