@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
     <style>
-        .header {
+        
+.header {
             padding: 5px;
             text-align: center;
             background: red;
@@ -59,10 +60,15 @@
         <h1>Dr. Makan Gigi S.Kom</h1>
     </div>
     <h1>Masukan Data Konsultasi</h1>
-    <form id="consultationForm" action="/submit_reservation" method="post" onsubmit="return validateForm()">
+    <form id="consultationForm" action="{{ url_for('submit_reservation') }}" method="post" onsubmit="return validateForm()">
+        <input type="hidden" name="name" value="{{ request.args.get('name') }}">
+        <input type="hidden" name="phone" value="{{ request.args.get('phone') }}">
+        <input type="hidden" name="email" value="{{ request.args.get('email') }}">
+        <input type="hidden" name="gender" value="{{ request.args.get('gender') }}">
+
         <label for="activity">Konsultasi</label>
         <select id="activity" name="activity">
-            <option value="" disabled selected>Pilih Konsultasi</option>
+            <option value="Default"> </option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -78,10 +84,21 @@
     </form>
 
     <script>
-        function V() {
+        function validateForm() {
             var activity = document.getElementById('activity').value;
-            if (activity === "") {
-                alert('Harap Pilih Tipe Konsultasi.');
+            var date = document.getElementById('date').value;
+            var time = document.getElementById('time').value;
+
+            if (activity === 'Default') {
+                alert('Harap Pilih Tipe Konsultasi');
+                return false;
+            }
+            if (date === '') {
+                alert('Harap Pilih Tanggal');
+                return false;
+            }
+            if (time === '') {
+                alert('Harap Pilih Waktu Temu');
                 return false;
             }
             return true;

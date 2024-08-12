@@ -5,53 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
     <style>
-        .header {
-            padding: 5px;
-            text-align: center;
-            background: red;
-            color: white;
-            font-size: 3vh;
-            width: 100%;
-        }
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 95vh;
-            margin: 1;
-            font-family: Arial, sans-serif;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            border-radius: 10px;
-        }
-        label {
-            margin-top: 10px;
-            width: 100%;
-            text-align: left;
-        }
-        input, select, button {
-            margin-top: 5px;
-            width: 100%;
-            padding: 10px;
-            border: 1px solid black;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-        button {
-            background-color: red;
-            color: white;
-            border: none;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-        button:hover {
-            background-color: darkred;
-        }
+            .header {
+        padding: 5px;
+        text-align: center;
+        background: red;
+        color: white;
+        font-size: 3vh;
+        width: 100%;
+    }
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 95vh;
+        margin: 1;
+        font-family: Arial, sans-serif;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    label {
+        margin-top: 10px;
+        width: 100%;
+        text-align: left;
+    }
+    input, select, button {
+        margin-top: 5px;
+        width: 100%;
+        padding: 10px;
+        border: 1px solid black;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    button {
+        background-color: red;
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+    button:hover {
+        background-color: darkred;
+    }
     </style>
 </head>
 <body>
@@ -59,12 +59,12 @@
         <h1>Dr. Makan Gigi S.Kom</h1>
     </div>
     <h1>Masukan Data Pasien</h1>
-    <form id="patientForm" action="/base" method="POST">
+    <form id="patientForm" action="{{ url_for('submit_name') }}" method="POST">
         <label for="name">Nama:</label>
         <input type="text" id="name" name="name" required>
 
-        <label for="number">Nomor Telepon:</label>
-        <input type="tel" id="number" name="number" required>
+        <label for="phone">Nomor Telepon:</label>
+        <input type="tel" id="phone" name="phone" required>
 
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
@@ -90,3 +90,4 @@
     </script>
 </body>
 </html>
+
