@@ -18,8 +18,14 @@ class Patient(db.Model):
     email = db.Column(db.String(120), nullable=False)
     gender = db.Column(db.String(10), nullable=False)
 
+class Activity(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    activity = db.Column(db.String(20), nullable=False)
+    date = db.Column(db.String(20), nullable=False)
+    meet = db.Column(db.String(20), nullable=False)
+
     def __repr__(self):
-        return f"Patient('{self.name}', '{self.email}')"
+        return f"Activity('{self.activity}', '{self.date}', '{self.meet}')"
 
 @app.route("/")
 def index():
@@ -46,14 +52,13 @@ def base():
 
 @app.route('/submit_reservation', methods=['POST'])
 def submit_reservation():
-    name = request.form['name']
-    phone = request.form['phone']
-    email = request.form['email']
-    gender = request.form['gender']
-    activity = request.form['activity']
+    activity_name = request.form['activity']
     date = request.form['date']
-    time = request.form['time']
+    meet = request.form['time'] 
 
+    reservation = Activity(activity=activity_name, date=date, meet=meet)
+    db.session.add(reservation)
+    db.session.commit()
 
     return redirect(url_for('ty'))
 
