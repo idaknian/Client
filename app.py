@@ -66,6 +66,13 @@ def submit_reservation():
 def ty():
     return render_template("ty.html", title='Thanks')
 
+@app.route('/admin_login', methods=['GET', 'POST'])
+def admin_login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+    return render_template('login.html', title='Admin Login')
+    
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()

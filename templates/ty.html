@@ -6,12 +6,40 @@
     <title>{{ title }}</title>
     <style>
         .header {
-            padding: 5px;
-            text-align: center;
+            padding: 20px;
             background: red;
             color: white;
             font-size: 3vh;
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            box-sizing: border-box;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .navbar {
+            position: absolute;
+            right: 20px;
+            bottom: 10px;
+        }
+        .login-button {
+            background-color: white;
+            color: red;
+            padding: 5px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+            font-size: 2vh;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .login-button:hover {
+            background-color: darkred;
+            color: white;
         }
         body {
             display: flex;
@@ -39,6 +67,9 @@
 <body>
     <div class="header">
         <h1>Dr. Makan Gigi S.Kom</h1>
+        <div class="navbar">
+            <button class="login-button" onclick="window.location.href='{{ url_for('admin_login') }}'">Login</button>
+        </div>
     </div>
     <h1>Terima Kasih Telah Mengreservasi di Dr.Makan Gigi S.Kom</h1>
     <p>Reservasi anda telah diproses.</p>
