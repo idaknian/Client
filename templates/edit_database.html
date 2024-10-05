@@ -1,9 +1,10 @@
+<!-- edit_database.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
+    <title>Database</title>
     <style>
         .header {
             padding: 20px;
@@ -50,35 +51,18 @@
             margin: 1;
             font-family: Arial, sans-serif;
         }
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            border-radius: 10px;
-        }
-        label {
-            margin-top: 10px;
+        table {
+            border-collapse: collapse;
             width: 100%;
+            border: 1px solid black;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
             text-align: left;
         }
-        input, select, button {
-            margin-top: 5px;
-            width: 100%;
-            padding: 10px;
-            border: 1px solid black;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-        button {
-            background-color: red;
-            color: white;
-            border: none;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-        button:hover {
-            background-color: darkred;
+        th {
+            background-color: #f0f0f0;
         }
     </style>
 </head>
@@ -91,15 +75,40 @@
             </a>
         </div>
     </div>
-    <h1>Masukan Data Konsultasi</h1>
-    <form id="loginForm" action="{{ url_for('admin_login') }}" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-
-        <button type="submit">Login</button>
-    </form>
+    <h1>Database</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Activities</th>
+            <th>Dates</th>
+            <th>Meet</th> 
+        </tr>
+        {% for patient in patients %}
+        <tr>
+            <td>{{ patient.name }}</td>
+            <td>{{ patient.phone }}</td>
+            <td>{{ patient.email }}</td>
+            <td>{{ patient.gender }}</td>
+            <td>
+                {% for activity in patient.activities %}
+                    {{ activity.activity }}<br>
+                {% endfor %}
+            </td>
+            <td>
+                {% for activity in patient.activities %}
+                    {{ activity.date.strftime('%Y-%m-%d') }}<br>
+                {% endfor %}
+            </td>
+            <td>
+                {% for activity in patient.activities %}
+                    {{ activity.meet }}<br>
+                {% endfor %}
+            </td> 
+        </tr>
+        {% endfor %}
+    </table>
 </body>
 </html>
